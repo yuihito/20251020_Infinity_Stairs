@@ -25,11 +25,36 @@ public class Stairs : MonoBehaviour
     //階段の数を管理するリスト
     private List<GameObject> activeStairs = new List<GameObject>();
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        stairsObject.SetActive(true);   
+        //============================
+        //   階段ブロックのプール作成
+        //============================
+        stairsPool = new ObjectPool<GameObject>(
+            createFunc: () =>
+            {
+                // 新しく階段ブロックを作る
+                var obj = Instantiate(stairsObject);
+                obj.SetActive(false);                       // まずは非表示
+                return obj;
+            },
+            actionOnGet: obj => obj.SetActive(true),        // 取り出したら表示
+            actionOnRelease: obj => obj.SetActive(false),   // 返したら非表示
+            actionOnDestroy: obj => Destroy(obj),           // 最大サイズ超えたら破棄
+            collectionCheck: false,
+            defaultCapacity: 20,                            // 最初に20個作っておく
+            maxSize: 100                                    // 最大100個まで管理
+        );
     }
+
+    /*
+    public void GenerateStairs;
+    {
+
+    }
+
+    public void RemoveStairs;
+    {
+
+    }*/
 }
