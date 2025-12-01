@@ -26,6 +26,8 @@ public class Player_Maine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //実は人間は左 → 右へ視線を動かす習性があるだから階段を上るときは右上に上る　ストレス解消に効く
+
+
     }
 }
