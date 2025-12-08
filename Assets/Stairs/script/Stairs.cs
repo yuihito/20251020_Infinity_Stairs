@@ -1,7 +1,8 @@
 using UnityEngine.Pool;
 using UnityEngine;
 using System.Collections.Generic;
-
+using System.Threading;
+/*
 public class Stairs : MonoBehaviour
 {
     //====== 階段 ======
@@ -42,19 +43,27 @@ public class Stairs : MonoBehaviour
             actionOnRelease: obj => obj.SetActive(false),   // 返したら非表示
             actionOnDestroy: obj => Destroy(obj),           // 最大サイズ超えたら破棄
             collectionCheck: false,
-            defaultCapacity: 20,                            // 最初に20個作っておく
+            defaultCapacity: 3,                            // 最初に20個作っておく
             maxSize: 100                                    // 最大100個まで管理
         );
     }
 
-    /*
+    private void Start()
+    {
+        GenerateStairs(startStairs);
+    }
+
+    
     public void GenerateStairs;
     {
-
+        for (int i = 0; i < count; i++)
+        
+        
     }
 
     public void RemoveStairs;
     {
 
-    }*/
+    }
 }
+*/
